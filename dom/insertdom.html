@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        article{
+            border: 2px solid tomato;
+            border-radius: 20px;
+            margin: 5px;
+            padding: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <h3>Exploring dom</h3>
+            <p id="first">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, consectetur.</p>
+            <!--article*3>h3{artile-$}+p.author{author-$}>lorem10-->
+            <article id="first-article">
+                <h3>article-1</h3>
+                <p class="author">author-1Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, dolorem.</p>
+            </article>
+            <article class="special">
+                <h3>article-2</h3>
+                <p class="author">author-2Architecto soluta earum voluptates vero illo nisi adipisci accusantium odit.</p>
+            </article>
+            <article>
+                <h3>article-3</h3>
+                <p class="author">author-3Necessitatibus amet sapiente maiores omnis magnam ullam cum officia sit?</p>
+            </article>
+            <article>
+                <h3>Grocery List</h3>
+                <ul id="gift-list">
+                    <li>gift item -1</li>
+                    <li>gift item -2</li>
+                    <li>gift item -3</li>
+                    <li>gift item -4</li>
+                    <li>gift item -5</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+    <script>
+
+    const article = document.getElementById('first-article');
+    const newParagraph = document.createElement('p');
+    newParagraph.innerHTML = 'some test added by javascript';
+    article.appendChild(newParagraph);
+
+      const ul = document.getElementById('gift-list');
+      const li = document.createElement('li');
+      li.innerHTML = 'gift item -6';
+      ul.appendChild(li);
+    </script>
+</body>
+</html>

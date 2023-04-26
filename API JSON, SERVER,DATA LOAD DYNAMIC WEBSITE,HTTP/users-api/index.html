@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test user api</title>
+    <style>
+        .user{
+            color: royalblue;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="user-count"><button id="load-user">Load User</button>
+
+
+    <!--out side function id-->
+    <div id="user">
+
+    </div>
+
+    <!-- inside function Details -->
+    <div id="user-details" >
+
+    </div>
+
+    <script>
+
+        // last step when we hide all data but when need a number just pickup
+        document.getElementById('load-user').addEventListener('click', function(){
+            const countText = document.getElementById('user-count').value
+            const Count = parseInt(countText)
+            //console.log(Count)
+
+            fetch('https://jsonplaceholder.typicode.com/users')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                data = data.slice(0, Count) //slice means first step e jotogula crop kora jai
+                // [1,2,3,4,5,6].slice(1,4) ans- 2,3,4
+                const userContainer = document.getElementById('user')
+
+                userContainer.innerHTML = ''
+                
+                for(let i=0; i<data.length; i++){
+                    const user = data[i]
+                    console.log(user)
+
+                    const p = document.createElement('p')
+                    p.innerHTML = `
+                    <p class=user> Name : <strong>${user.name}</strong> <button onClick="getUserDetails(${user.id})" > Get_Details - ${user.id}</button> </p>
+                    `
+                    userContainer.append(p)
+                }
+            })
+
+        })
+
+        function getUserDetails(userId){
+            fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                const detail = document.getElementById('user-details')
+                detail.innerHTML = `
+                    <h2> Id - ${data.id} </h2>
+                    <h3> Name - ${data.name} </h3>
+                    <p> Email = ${data.email} </p>
+                `
+            })
+            
+        }
+
+
+    </script>
+    
+</body>
+</html>

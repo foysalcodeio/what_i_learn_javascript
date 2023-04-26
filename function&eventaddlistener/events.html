@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event managemen company</title>
+
+</head>
+<body>
+    <h1 onclick="alert('hur beta')">Exploring Events</h1>
+
+    <button id="first">click me-1</button>
+    <button id="second">click me-2</button>
+    <button id="third">click me-3</button>
+    <button id="forth">click me-4</button>
+
+    <script>
+
+        function handleClick(){
+            document.body.style.backgroundColor = 'red';
+        }
+        //listener way 1
+        const secondButton = document.getElementById('second');
+        secondButton.onclick = handleClick;
+
+        //listener way 2
+        const thirdButton = document.getElementById('third');
+        thirdButton.onclick = function(){
+            console.log('third person click')
+        }
+        //modern way listen example
+        //listener way 3
+        const forthButton = document.getElementById('forth');
+        forthButton.addEventListener('click', handleClick);
+
+        //listener way 4
+        //Anymous function
+        const firstButton = document.getElementById('first').addEventListener('click', function(){
+            document.body.style.color = 'tomato'
+        });
+
+
+
+    </script>
+
+</body>
+</html>
